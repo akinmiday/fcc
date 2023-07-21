@@ -44,16 +44,16 @@ const App = () => {
   }, [lat, lon])
 
   if (weather) {
-    console.log()
+    console.log(weather)
   }
 
-  // if (loading) {
-  //   return (
-  //     <View style={styles.container}>
-  //       <ActivityIndicator size={"large"} color={"blue"} />
-  //     </View>
-  //   )
-  // }
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size={"large"} color={"blue"} />
+      </View>
+    )
+  }
   return (
     <NavigationContainer>
       <Tabs />
