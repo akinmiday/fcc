@@ -14,12 +14,12 @@ const App = () => {
   const [lon, setLon] = useState([])
 
   const fetchWeatheData = async () => {
+    console.log(data)
     try {
       const res = await fetch(
         `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
       )
       const data = await res.json()
-      console.log(data)
       setWeather(data)
       setLoading(false)
     } catch (e) {
@@ -45,7 +45,7 @@ const App = () => {
   }, [])
 
   if (weather) {
-    console.log(weather)
+    console.log()
   }
 
   // if (loading) {

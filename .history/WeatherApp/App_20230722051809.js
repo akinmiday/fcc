@@ -19,7 +19,6 @@ const App = () => {
         `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
       )
       const data = await res.json()
-      console.log(data)
       setWeather(data)
       setLoading(false)
     } catch (e) {
@@ -42,19 +41,19 @@ const App = () => {
 
       await fetchWeatheData()
     })
-  }, [])
+  }, [lat, lon])
 
   if (weather) {
     console.log(weather)
   }
 
-  // if (loading) {
-  //   return (
-  //     <View style={styles.container}>
-  //       <ActivityIndicator size={"large"} color={"blue"} />
-  //     </View>
-  //   )
-  // }
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size={"large"} color={"blue"} />
+      </View>
+    )
+  }
   return (
     <NavigationContainer>
       <Tabs />

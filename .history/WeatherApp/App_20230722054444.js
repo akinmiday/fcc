@@ -10,8 +10,8 @@ const App = () => {
   const [location, setLocation] = useState(null)
   const [error, setError] = useState(null)
   const [weather, setWeather] = useState([])
-  const [lat, setLat] = useState([])
-  const [lon, setLon] = useState([])
+  const [lat, setLat] = useState()
+  const [lon, setLon] = useState()
 
   const fetchWeatheData = async () => {
     try {
@@ -19,7 +19,6 @@ const App = () => {
         `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
       )
       const data = await res.json()
-      console.log(data)
       setWeather(data)
       setLoading(false)
     } catch (e) {
@@ -44,7 +43,7 @@ const App = () => {
     })
   }, [])
 
-  if (weather) {
+  if (weather && weather.length > 0) {
     console.log(weather)
   }
 
