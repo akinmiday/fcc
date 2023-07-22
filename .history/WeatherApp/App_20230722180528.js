@@ -10,13 +10,13 @@ const App = () => {
   const [location, setLocation] = useState(null)
   const [error, setError] = useState(null)
   const [weather, setWeather] = useState([])
-  const [lat, setLat] = useState([])
-  const [lon, setLon] = useState([])
+  const [lat, setLat] = useState([LAT])
+  const [lon, setLon] = useState([LON])
 
   const fetchWeatheData = async () => {
     try {
       const res = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
+        `http://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&appid=${WEATHER_API_KEY}`
       )
       const data = await res.json()
       console.log(data)
@@ -37,14 +37,12 @@ const App = () => {
         return
       }
       let location = await Location.getCurrentPositionAsync({})
-      // setLat(LAT)
-      // setLon(LON)
       setLat(location.coords.latitude)
       setLon(location.coords.longitude)
 
       await fetchWeatheData()
     })
-  }, [fetchWeatheData])
+  }, [])
 
   if (weather) {
     console.log(weather)
@@ -57,7 +55,6 @@ const App = () => {
   //     </View>
   //   )
   // }
-
   return (
     <NavigationContainer>
       <Tabs />

@@ -37,17 +37,17 @@ const App = () => {
         return
       }
       let location = await Location.getCurrentPositionAsync({})
-      // setLat(LAT)
-      // setLon(LON)
+      setLat(LAT)
+      setLon(LON)
       setLat(location.coords.latitude)
       setLon(location.coords.longitude)
 
       await fetchWeatheData()
     })
-  }, [fetchWeatheData])
+  }, [])
 
   if (weather) {
-    console.log(weather)
+    console.log()
   }
 
   // if (loading) {
@@ -57,7 +57,6 @@ const App = () => {
   //     </View>
   //   )
   // }
-
   return (
     <NavigationContainer>
       <Tabs />

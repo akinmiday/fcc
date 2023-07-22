@@ -44,10 +44,10 @@ const App = () => {
 
       await fetchWeatheData()
     })
-  }, [fetchWeatheData])
+  }, [])
 
   if (weather) {
-    console.log(weather)
+    console.log()
   }
 
   // if (loading) {

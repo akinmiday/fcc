@@ -11,7 +11,7 @@ const App = () => {
   const [error, setError] = useState(null)
   const [weather, setWeather] = useState([])
   const [lat, setLat] = useState([])
-  const [lon, setLon] = useState([])
+  const [lon, setLon] = useState()
 
   const fetchWeatheData = async () => {
     try {
@@ -37,17 +37,15 @@ const App = () => {
         return
       }
       let location = await Location.getCurrentPositionAsync({})
-      // setLat(LAT)
-      // setLon(LON)
       setLat(location.coords.latitude)
       setLon(location.coords.longitude)
 
       await fetchWeatheData()
     })
-  }, [fetchWeatheData])
+  }, [])
 
   if (weather) {
-    console.log(weather)
+    console.log()
   }
 
   // if (loading) {
