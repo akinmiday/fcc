@@ -37,8 +37,10 @@ const App = () => {
         return
       }
       let location = await Location.getCurrentPositionAsync({})
-      setLat(location.coords.latitude)
-      setLon(location.coords.longitude)
+      setLat(LAT)
+      setLon(LON)
+      // setLat(location.coords.latitude)
+      // setLon(location.coords.longitude)
 
       await fetchWeatheData()
     })
